@@ -1,3 +1,5 @@
+import { RiGithubLine, RiLinkedinLine } from "react-icons/ri";
+
 import { siteConfig } from "@/lib/site";
 
 export function Footer() {
@@ -29,18 +31,20 @@ export function Footer() {
               href={siteConfig.links.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="link-hover text-xs font-medium tracking-widest uppercase transition-opacity duration-200 hover:opacity-50"
+              className="link-hover flex items-center gap-1.5 text-xs font-medium tracking-widest uppercase transition-opacity duration-200 hover:opacity-50"
               style={{ color: "var(--text-muted)", letterSpacing: "0.1em" }}
             >
+              <RiGithubLine size={14} aria-hidden="true" style={{ color: "var(--text-muted)" }} />
               GitHub
             </a>
             <a
               href={siteConfig.links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="link-hover text-xs font-medium tracking-widest uppercase transition-opacity duration-200 hover:opacity-50"
+              className="link-hover flex items-center gap-1.5 text-xs font-medium tracking-widest uppercase transition-opacity duration-200 hover:opacity-50"
               style={{ color: "var(--text-muted)", letterSpacing: "0.1em" }}
             >
+              <RiLinkedinLine size={14} aria-hidden="true" style={{ color: "var(--text-muted)" }} />
               LinkedIn
             </a>
           </div>

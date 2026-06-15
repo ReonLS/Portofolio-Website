@@ -2,12 +2,27 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import { siteConfig } from "@/lib/site";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 export function Header() {
   const pathname = usePathname();
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight > 0) {
+        const progress = (window.scrollY / totalHeight) * 100;
+        setScrollProgress(progress);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header
@@ -85,6 +100,15 @@ export function Header() {
           <ThemeToggle />
         </div>
       </div>
+
+      {/* Scroll Progress Indicator Bar */}
+      <div
+        className="absolute bottom-0 left-0 h-[2px] transition-all duration-100 ease-out"
+        style={{
+          width: `${scrollProgress}%`,
+          background: "var(--text-primary)",
+        }}
+      />
     </header>
   );
 }

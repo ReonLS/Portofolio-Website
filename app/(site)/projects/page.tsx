@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { ProjectCard } from "@/components/sections/project-card";
 import { projects } from "@/data/projects";
+import { Reveal } from "@/components/ui/reveal";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -62,10 +63,15 @@ export default function ProjectsPage() {
       </div>
 
       {/* Project grid */}
-      <div className="animate-fade-in-up delay-400 grid gap-4 sm:grid-cols-2">
-        {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
-        ))}
+      <div className="grid gap-4 sm:grid-cols-2">
+        {projects.map((project, idx) => {
+          const delayClass = `delay-${(idx % 5 + 1) * 100}`;
+          return (
+            <Reveal key={project.slug} delayClass={delayClass}>
+              <ProjectCard project={project} />
+            </Reveal>
+          );
+        })}
       </div>
     </section>
   );

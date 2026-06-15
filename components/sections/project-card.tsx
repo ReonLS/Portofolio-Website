@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 
+import { HiArrowTopRightOnSquare } from "react-icons/hi2";
+
 import type { Project } from "@/types/project";
 
 type ProjectCardProps = {
@@ -50,15 +52,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           }}
           aria-hidden="true"
         >
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path
-              d="M3 13L13 3M13 3H7M13 3V9"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <HiArrowTopRightOnSquare size={16} />
         </span>
       </div>
 

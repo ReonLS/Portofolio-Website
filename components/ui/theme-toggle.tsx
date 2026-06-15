@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import { RiSunLine, RiMoonLine } from "react-icons/ri";
+
 import { useTheme } from "@/lib/theme-provider";
 
 export function ThemeToggle() {
@@ -73,16 +75,8 @@ export function ThemeToggle() {
         }}
       >
         {/* ── Sun — visible in light mode ── */}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="9"
-          height="9"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+        <RiSunLine
+          size={9}
           style={{
             position: "absolute",
             color: "var(--text-muted)",
@@ -95,22 +89,11 @@ export function ThemeToggle() {
               ? "opacity 120ms ease, transform 150ms ease"
               : "opacity 200ms ease 180ms, transform 300ms cubic-bezier(0.34,1.56,0.64,1) 160ms",
           }}
-        >
-          <circle cx="12" cy="12" r="4" />
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-        </svg>
+        />
 
         {/* ── Moon — visible in dark mode ── */}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="9"
-          height="9"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+        <RiMoonLine
+          size={9}
           style={{
             position: "absolute",
             color: "var(--text-primary)",
@@ -122,9 +105,7 @@ export function ThemeToggle() {
               ? "opacity 200ms ease 180ms, transform 300ms cubic-bezier(0.34,1.56,0.64,1) 160ms"
               : "opacity 120ms ease, transform 150ms ease",
           }}
-        >
-          <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" />
-        </svg>
+        />
       </span>
     </button>
   );

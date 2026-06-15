@@ -25,6 +25,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       "data-theme"
     ) as Theme | null;
     const resolved = stored ?? attr ?? "light";
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setTheme(resolved);
   }, []);
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { siteConfig } from "@/lib/site";
+import { Tooltip } from "@/components/ui/tooltip";
 
 // Decorative code lines for the terminal block
 const codeLines = [
@@ -17,7 +17,17 @@ const codeLines = [
   { tokens: [{ text: "}", color: "var(--text-muted)" }] },
 ];
 
-const stack = ["Go (Golang)", "REST API", "MySQL", "MariaDB", "Docker", "JWT", "RBAC", "Unit Testing", "Swagger"];
+const stack = [
+  { label: "Go (Golang)", tooltip: "Primary language — REST APIs & CLI tools" },
+  { label: "REST API", tooltip: "Designing clean, stateless endpoints" },
+  { label: "MySQL", tooltip: "Relational database design & optimization" },
+  { label: "MariaDB", tooltip: "High-performance database clustering" },
+  { label: "Docker", tooltip: "Containerization for production & local dev" },
+  { label: "JWT", tooltip: "Stateless security & token authentication" },
+  { label: "RBAC", tooltip: "Role-Based Access Control authorization" },
+  { label: "Unit Testing", tooltip: "Testing handlers, services, and repositories" },
+  { label: "Swagger", tooltip: "Interactive REST API documentation" },
+];
 
 export function Hero() {
   return (
@@ -79,17 +89,8 @@ export function Hero() {
         {/* Stack pills */}
         <ul className="animate-fade-in-up delay-400 mt-6 flex flex-wrap gap-2">
           {stack.map((tech) => (
-            <li
-              key={tech}
-              className="px-2.5 py-1 text-xs font-medium tracking-wide font-mono"
-              style={{
-                border: "1px solid var(--border-light)",
-                color: "var(--text-muted)",
-                background: "var(--bg-surface)",
-                letterSpacing: "0.02em",
-              }}
-            >
-              {tech}
+            <li key={tech.label}>
+              <Tooltip label={tech.label} tooltip={tech.tooltip} />
             </li>
           ))}
         </ul>
