@@ -80,7 +80,7 @@ export function Hero() {
 
         {/* Description */}
         <p
-          className="animate-fade-in-up delay-300 text-sm leading-relaxed"
+          className="animate-fade-in-up delay-300 text-sm leading-relaxed text-justify lg:text-left"
           style={{ color: "var(--text-secondary)", maxWidth: "28rem" }}
         >
           Final-year Computer Science student at Binus with hands-on backend development experience in Go. Focused on building scalable APIs, database architecture, and reliable infrastructure.
@@ -96,10 +96,10 @@ export function Hero() {
         </ul>
 
         {/* CTAs */}
-        <div className="animate-fade-in-up delay-500 mt-10 flex flex-wrap gap-4">
+        <div className="animate-fade-in-up delay-500 mt-10 flex flex-col sm:flex-row gap-4">
           <Link
             href="/projects"
-            className="inline-flex h-11 items-center justify-center px-7 text-xs font-medium tracking-widest uppercase transition-opacity duration-200 hover:opacity-70"
+            className="inline-flex w-full sm:w-auto h-11 items-center justify-center px-7 text-xs font-medium tracking-widest uppercase transition-opacity duration-200 hover:opacity-70"
             style={{
               background: "var(--text-primary)",
               color: "var(--bg-surface)",
@@ -110,7 +110,7 @@ export function Hero() {
           </Link>
           <Link
             href="/contact"
-            className="inline-flex h-11 items-center justify-center px-7 text-xs font-medium tracking-widest uppercase transition-opacity duration-200 hover:opacity-60"
+            className="inline-flex w-full sm:w-auto h-11 items-center justify-center px-7 text-xs font-medium tracking-widest uppercase transition-opacity duration-200 hover:opacity-60"
             style={{
               border: "1px solid var(--border-default)",
               color: "var(--text-primary)",

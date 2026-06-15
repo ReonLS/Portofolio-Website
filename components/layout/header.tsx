@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { RiMenuLine, RiCloseLine } from "react-icons/ri";
 
 import { siteConfig } from "@/lib/site";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
@@ -10,6 +11,18 @@ import { ThemeToggle } from "@/components/ui/theme-toggle";
 export function Header() {
   const pathname = usePathname();
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileMenuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,7 +65,7 @@ export function Header() {
 
         {/* Right side: nav + toggle */}
         <div className="flex items-center gap-6">
-          <nav aria-label="Main navigation">
+          <nav aria-label="Main navigation" className="hidden md:block">
             <ul className="flex items-center gap-8">
               {siteConfig.nav.map((item) => {
                 const isActive =
@@ -98,8 +111,63 @@ export function Header() {
 
           {/* Theme toggle */}
           <ThemeToggle />
+
+          {/* Mobile menu toggle */}
+          <button
+            type="button"
+            className="md:hidden p-2 -mr-2 transition-opacity hover:opacity-70"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle mobile menu"
+            style={{ color: "var(--text-primary)" }}
+          >
+            {isMobileMenuOpen ? <RiCloseLine size={24} /> : <RiMenuLine size={24} />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {isMobileMenuOpen && (
+        <div
+          className="absolute top-16 left-0 w-full border-b md:hidden"
+          style={{
+            background: "color-mix(in srgb, var(--bg-surface) 95%, transparent)",
+            WebkitBackdropFilter: "blur(16px)",
+            backdropFilter: "blur(16px)",
+            borderColor: "var(--border-light)",
+            boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.05)",
+          }}
+        >
+          <nav aria-label="Mobile navigation" className="flex flex-col py-6 px-6">
+            <ul className="flex flex-col gap-6">
+              {siteConfig.nav.map((item) => {
+                const isActive =
+                  item.href === "/"
+                    ? pathname === "/"
+                    : pathname.startsWith(item.href);
+
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="block text-sm font-medium tracking-widest uppercase transition-opacity duration-200 hover:opacity-60"
+                      style={{
+                        color: isActive
+                          ? "var(--text-primary)"
+                          : "var(--text-muted)",
+                        textDecoration: "none",
+                        letterSpacing: "0.15em",
+                      }}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        </div>
+      )}
 
       {/* Scroll Progress Indicator Bar */}
       <div
