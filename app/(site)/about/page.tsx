@@ -68,13 +68,13 @@ export default function AboutPage() {
                 Background
               </p>
               <p
-                className="text-sm leading-relaxed"
+                className="text-sm leading-relaxed text-justify lg:text-left"
                 style={{ color: "var(--text-secondary)" }}
               >
                 I am a final-year Computer Science student at Bina Nusantara University specializing in backend development. I have hands-on experience in Go (Golang), including designing REST APIs, security & authentication protocols, databases, and DevOps practices like containerization.
               </p>
               <p
-                className="text-sm leading-relaxed"
+                className="text-sm leading-relaxed text-justify lg:text-left"
                 style={{ color: "var(--text-secondary)" }}
               >
                 During my one-year professional delivery experience as a Software Engineer Intern at PT Realta Chakradarma, I took ownership of projects from requirements gathering and technical documentation through production deployment and end-user handover.
@@ -92,7 +92,7 @@ export default function AboutPage() {
                 Currently
               </p>
               <p
-                className="text-sm leading-relaxed"
+                className="text-sm leading-relaxed text-justify lg:text-left"
                 style={{ color: "var(--text-secondary)" }}
               >
                 Expected to graduate in August 2026. Actively looking for Backend Software Engineer opportunities to build robust and scalable systems.
@@ -179,7 +179,7 @@ export default function AboutPage() {
                 </span>
               </div>
 
-              <ul className="list-disc pl-4 text-xs leading-relaxed flex flex-col gap-2" style={{ color: "var(--text-secondary)" }}>
+              <ul className="list-disc pl-4 text-xs leading-relaxed flex flex-col gap-2 text-justify lg:text-left" style={{ color: "var(--text-secondary)" }}>
                 <li>
                   Delivered 3 enterprise ITSM projects on Ivanti for Bank Tabungan Negara, participating across business analysis (BA), development (Dev), and quality assurance (QA) phases from requirements gathering to production deployment.
                 </li>
@@ -240,7 +240,7 @@ export default function AboutPage() {
               <span className="text-xs font-mono" style={{ color: "var(--text-muted)" }}>
                 Relevant Coursework
               </span>
-              <p className="text-xs leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+              <p className="text-xs leading-relaxed text-justify lg:text-left" style={{ color: "var(--text-secondary)" }}>
                 Data Structures, Algorithm Design and Analysis, Database Technology, Software Engineering, Operating Systems, Computer Networks, Object Oriented Programming
               </p>
             </div>

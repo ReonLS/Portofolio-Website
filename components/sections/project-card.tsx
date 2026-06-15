@@ -18,7 +18,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
     <article
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group flex flex-col gap-4 p-6 transition-all duration-200"
+      className="group relative flex flex-col gap-4 p-6 transition-all duration-200"
       style={{
         background: "var(--bg-surface)",
         border: `1px solid ${hovered ? "var(--border-strong)" : "var(--border-light)"}`,
@@ -35,8 +35,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
           style={{ color: "var(--text-primary)" }}
         >
           <Link
-            href={`/projects/${project.slug}`}
+            href={project.href || `/projects/${project.slug}`}
+            target={project.href ? "_blank" : undefined}
+            rel={project.href ? "noopener noreferrer" : undefined}
             style={{ textDecoration: "none", color: "inherit" }}
+            className="before:absolute before:inset-0"
           >
             {project.title}
           </Link>
