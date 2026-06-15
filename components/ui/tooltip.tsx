@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, createElement } from "react";
+import { getTechIcon } from "@/lib/tech-icons";
 
 type TooltipProps = {
   label: string;
@@ -9,6 +10,7 @@ type TooltipProps = {
 
 export function Tooltip({ label, tooltip }: TooltipProps) {
   const [hovered, setHovered] = useState(false);
+  const Icon = getTechIcon(label);
 
   return (
     <div
@@ -17,7 +19,7 @@ export function Tooltip({ label, tooltip }: TooltipProps) {
       onMouseLeave={() => setHovered(false)}
     >
       <div
-        className="px-2.5 py-1 text-xs font-medium tracking-wide font-mono transition-colors duration-200"
+        className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium tracking-wide font-mono transition-colors duration-200"
         style={{
           border: "1px solid var(--border-light)",
           color: "var(--text-muted)",
@@ -26,7 +28,13 @@ export function Tooltip({ label, tooltip }: TooltipProps) {
           cursor: "help",
         }}
       >
-        {label}
+        {Icon && createElement(Icon, {
+          size: 13,
+          className: "shrink-0",
+          style: { color: "var(--text-muted)" },
+          "aria-hidden": "true"
+        })}
+        <span>{label}</span>
       </div>
       {hovered && (
         <div

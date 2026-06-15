@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { siteConfig } from "@/lib/site";
 import { Reveal } from "@/components/ui/reveal";
+import { getTechIcon } from "@/lib/tech-icons";
 
 export const metadata: Metadata = {
   title: "About",
@@ -114,19 +115,23 @@ export default function AboutPage() {
                     {cat.name}
                   </span>
                   <ul className="flex flex-wrap gap-2">
-                    {cat.skills.map((skill) => (
-                      <li
-                        key={skill}
-                        className="px-2.5 py-1 text-xs font-mono"
-                        style={{
-                          border: "1px solid var(--border-light)",
-                          color: "var(--text-secondary)",
-                          background: "var(--bg-surface)",
-                        }}
-                      >
-                        {skill}
-                      </li>
-                    ))}
+                    {cat.skills.map((skill) => {
+                      const Icon = getTechIcon(skill);
+                      return (
+                        <li
+                          key={skill}
+                          className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono"
+                          style={{
+                            border: "1px solid var(--border-light)",
+                            color: "var(--text-secondary)",
+                            background: "var(--bg-surface)",
+                          }}
+                        >
+                          {Icon && <Icon size={13} className="shrink-0" style={{ color: "var(--text-muted)" }} aria-hidden="true" />}
+                          <span>{skill}</span>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               ))}
