@@ -18,14 +18,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
     <article
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative flex flex-col gap-4 p-6 transition-all duration-200"
+      className="group relative flex flex-col gap-4 p-6 transition-all duration-300"
       style={{
         background: "var(--bg-surface)",
         border: `1px solid ${hovered ? "var(--border-strong)" : "var(--border-light)"}`,
-        transform: hovered ? "translateY(-3px)" : "translateY(0)",
+        transform: hovered ? "translateY(-4px)" : "translateY(0)",
         boxShadow: hovered
-          ? "0 8px 24px rgba(0,0,0,0.06)"
-          : "0 1px 3px rgba(0,0,0,0.02)",
+          ? "var(--shadow-md)"
+          : "var(--shadow-sm), inset 0 1px 0 var(--border-hairline)",
       }}
     >
       {/* Header row */}
@@ -47,11 +47,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
         {/* Arrow icon — fades in on hover */}
         <span
-          className="shrink-0 transition-all duration-200"
+          className="shrink-0 transition-all duration-300"
           style={{
             opacity: hovered ? 1 : 0,
             transform: hovered ? "translate(2px, -2px)" : "translate(0,0)",
-            color: "var(--text-muted)",
+            color: hovered ? "var(--accent-color)" : "var(--text-muted)",
           }}
           aria-hidden="true"
         >

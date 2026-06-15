@@ -38,7 +38,7 @@ export function Hero() {
         <div className="animate-fade-in flex items-center gap-3 mb-8">
           <span
             className="inline-block h-1.5 w-1.5 rounded-full"
-            style={{ background: "var(--text-primary)" }}
+            style={{ background: "var(--accent-color)" }}
             aria-hidden="true"
           />
           <p
@@ -132,7 +132,7 @@ export function Hero() {
           style={{
             border: "1px solid var(--border-light)",
             background: "var(--bg-surface)",
-            boxShadow: "0 4px 24px rgba(0,0,0,0.04)",
+            boxShadow: "var(--shadow-lg), inset 0 1px 0 var(--border-hairline)",
           }}
         >
           {/* Title bar */}

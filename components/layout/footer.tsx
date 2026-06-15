@@ -8,7 +8,10 @@ export function Footer() {
   return (
     <footer
       className="mt-auto"
-      style={{ borderTop: "1px solid var(--border-light)" }}
+      style={{
+        borderTop: "1px solid var(--border-light)",
+        background: "linear-gradient(to bottom, transparent, var(--bg-subtle))"
+      }}
     >
       <div className="mx-auto max-w-5xl px-6 py-10">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">

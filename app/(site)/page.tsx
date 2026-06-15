@@ -36,12 +36,6 @@ export default function HomePage() {
                   Featured Projects
                 </h2>
               </div>
-              <span
-                className="text-xs tabular-nums"
-                style={{ color: "var(--text-faint)" }}
-              >
-                {featuredProjects.length} selected
-              </span>
             </div>
 
             {/* Project grid */}

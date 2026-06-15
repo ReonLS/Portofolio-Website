@@ -153,16 +153,18 @@ export default function AboutPage() {
               className="text-xs font-medium tracking-widest uppercase"
               style={{ color: "var(--text-faint)", letterSpacing: "0.15em" }}
             >
-              Experience
+              <span style={{ fontVariantNumeric: "tabular-nums" }}>02 —</span> Experience
             </h2>
           </div>
 
           <div className="flex flex-col gap-8">
             <div
-              className="p-6 transition-colors duration-200"
+              className="p-6 transition-all duration-300 hover:border-l-[color:var(--accent-color)] hover:-translate-y-1"
               style={{
                 border: "1px solid var(--border-light)",
+                borderLeftWidth: "2px",
                 background: "var(--bg-surface)",
+                boxShadow: "var(--shadow-sm)",
               }}
             >
               <div className="flex flex-col gap-2 md:flex-row md:items-baseline md:justify-between mb-4">
@@ -211,15 +213,17 @@ export default function AboutPage() {
               className="text-xs font-medium tracking-widest uppercase"
               style={{ color: "var(--text-faint)", letterSpacing: "0.15em" }}
             >
-              Education
+              <span style={{ fontVariantNumeric: "tabular-nums" }}>03 —</span> Education
             </h2>
           </div>
 
           <div
-            className="p-6"
+            className="p-6 transition-all duration-300 hover:border-l-[color:var(--accent-color)] hover:-translate-y-1"
             style={{
               border: "1px solid var(--border-light)",
+              borderLeftWidth: "2px",
               background: "var(--bg-surface)",
+              boxShadow: "var(--shadow-sm)",
             }}
           >
             <div className="flex flex-col gap-2 md:flex-row md:items-baseline md:justify-between mb-4">

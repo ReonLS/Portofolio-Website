@@ -44,8 +44,9 @@ export function Header() {
         background: "color-mix(in srgb, var(--bg-base) 85%, transparent)",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
-        borderColor: "var(--border-light)",
-        transition: "background 300ms ease, border-color 300ms ease",
+        borderColor: scrollProgress > 0 ? "transparent" : "var(--border-light)",
+        boxShadow: scrollProgress > 0 ? "var(--shadow-sm), inset 0 -1px 0 var(--border-hairline)" : "none",
+        transition: "background 300ms ease, border-color 300ms ease, box-shadow 300ms ease",
       }}
     >
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
@@ -174,7 +175,7 @@ export function Header() {
         className="absolute bottom-0 left-0 h-[2px] transition-all duration-100 ease-out"
         style={{
           width: `${scrollProgress}%`,
-          background: "var(--text-primary)",
+          background: "linear-gradient(to right, var(--text-muted), var(--accent-color))",
         }}
       />
     </header>

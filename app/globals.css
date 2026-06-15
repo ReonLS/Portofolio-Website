@@ -5,12 +5,13 @@
    ============================================ */
 :root {
   /* Backgrounds */
-  --bg-base: #FAFAFA;
+  --bg-base: #F7F7F5;
   --bg-surface: #FFFFFF;
-  --bg-subtle: #F5F5F5;
-  --bg-muted: #EFEFEF;
+  --bg-subtle: #F2F2EF;
+  --bg-muted: #E8E8E4;
 
   /* Borders */
+  --border-hairline: rgba(0, 0, 0, 0.06);
   --border-light: #E5E5E5;
   --border-default: #D4D4D4;
   --border-strong: #A3A3A3;
@@ -21,9 +22,16 @@
   --text-muted: #737373;
   --text-faint: #A3A3A3;
 
-  /* Accent (monochromatic — stays dark) */
+  /* Accent */
   --accent: #171717;
   --accent-hover: #404040;
+  --accent-color: #2563EB; /* Premium vivid blue accent */
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 8px 24px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04);
+  --shadow-lg: 0 20px 48px rgba(0,0,0,0.10), 0 4px 12px rgba(0,0,0,0.06);
 
   /* Tailwind token mapping */
   --background: var(--bg-base);
@@ -35,14 +43,15 @@
    ============================================ */
 [data-theme="dark"] {
   /* Backgrounds */
-  --bg-base: #111111;
-  --bg-surface: #1C1C1C;
-  --bg-subtle: #242424;
-  --bg-muted: #2E2E2E;
+  --bg-base: #0A0A0A;
+  --bg-surface: #141414;
+  --bg-subtle: #1A1A1A;
+  --bg-muted: #262626;
 
   /* Borders */
-  --border-light: #2A2A2A;
-  --border-default: #383838;
+  --border-hairline: rgba(255, 255, 255, 0.04);
+  --border-light: #262626;
+  --border-default: #333333;
   --border-strong: #525252;
 
   /* Text */
@@ -54,6 +63,13 @@
   /* Accent */
   --accent: #F2F2F2;
   --accent-hover: #B0B0B0;
+  --accent-color: #3B82F6; /* Premium bright blue accent */
+
+  /* Shadows for dark mode (subtly stronger to be visible) */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.2);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+  --shadow-md: 0 8px 24px rgba(0,0,0,0.4), 0 2px 6px rgba(0,0,0,0.2);
+  --shadow-lg: 0 20px 48px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.3);
 
   --background: var(--bg-base);
   --foreground: var(--text-primary);
@@ -202,6 +218,15 @@ body {
   }
 }
 
+@keyframes shimmer {
+  from {
+    background-position: -200% center;
+  }
+  to {
+    background-position: 200% center;
+  }
+}
+
 /* Animation utility classes */
 .animate-fade-in-up {
   animation: fadeInUp 0.5s ease-out both;
@@ -241,9 +266,23 @@ body {
    ============================================ */
 .section-divider {
   height: 1px;
-  background: var(--border-light);
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--border-default) 20%,
+    var(--border-default) 80%,
+    transparent
+  );
   transform-origin: left center;
   animation: drawLine 0.6s ease-out both;
+}
+
+.ruled-bg {
+  background-image: linear-gradient(
+    var(--border-hairline) 1px,
+    transparent 1px
+  );
+  background-size: 100% 2.5rem;
 }
 
 /* Link with underline grow effect */
