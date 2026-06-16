@@ -85,7 +85,7 @@ export function TerminalBlock() {
         .map((t) => t.text)
         .join("");
 
-      const delay = currentLineText.length === 0 ? 150 : 50;
+      const delay = currentLineText.length === 0 ? 80 : 25;
 
       const timer = setTimeout(() => {
         if (typedChars < currentLineText.length) {
