@@ -2,12 +2,12 @@ import type { Project } from "@/types/project";
 
 export const projects: Project[] = [
   {
-    slug: "katalog-api",
-    title: "Katalog-Api 2026",
+    slug: "goshelf",
+    title: "GoShelf",
     description:
-      "A production-grade product listing API in Go where each user can manage their own catalogue, following production-grade practices and clean architecture principles. Enforced JWT-based authentication and RBAC authorization across endpoints.",
+      "A secure, production-grade product catalogue API in Go, built with clean architecture, JWT authentication, and RBAC authorization.",
     tags: ["Go (Golang)", "REST API", "JWT", "MySQL", "Docker", "Swagger"],
-    href: "https://github.com/ReonLS/Katalog-Api",
+    href: "https://github.com/ReonLS/GoShelf",
     featured: true,
   },
 ];
