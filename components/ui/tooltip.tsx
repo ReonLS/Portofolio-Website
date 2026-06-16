@@ -22,8 +22,9 @@ export function Tooltip({ label, tooltip }: TooltipProps) {
         className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium tracking-wide font-mono transition-colors duration-200"
         style={{
           border: "1px solid var(--border-light)",
-          color: "var(--text-muted)",
-          background: "var(--bg-surface)",
+          color: hovered ? "var(--text-secondary)" : "var(--text-muted)",
+          background: hovered ? "var(--bg-subtle)" : "var(--bg-surface)",
+          transition: "background 200ms ease, color 200ms ease",
           letterSpacing: "0.02em",
           cursor: "help",
         }}
@@ -31,7 +32,11 @@ export function Tooltip({ label, tooltip }: TooltipProps) {
         {Icon && createElement(Icon, {
           size: 13,
           className: "shrink-0",
-          style: { color: "var(--text-muted)" },
+          style: { 
+            color: hovered ? "var(--accent-color)" : "var(--text-muted)",
+            transform: hovered ? "scale(1.3)" : "scale(1)",
+            transition: "transform 200ms ease, color 200ms ease",
+          },
           "aria-hidden": "true"
         })}
         <span>{label}</span>
