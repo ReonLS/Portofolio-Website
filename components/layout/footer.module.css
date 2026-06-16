@@ -1,0 +1,9 @@
+.authorName {
+  color: var(--text-muted);
+  transition: color 300ms ease;
+  cursor: default;
+}
+
+.authorName:hover {
+  color: var(--text-primary);
+}

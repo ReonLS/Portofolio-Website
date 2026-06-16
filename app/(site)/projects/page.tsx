@@ -48,19 +48,11 @@ export default function ProjectsPage() {
         A collection of work I&apos;ve built and contributed to.
       </p>
 
-      {/* Divider + count */}
-      <div className="animate-fade-in-up delay-300 flex items-center justify-between mt-12 mb-8">
-        <div
-          className="section-divider flex-1"
-          aria-hidden="true"
-        />
-        <span
-          className="ml-4 text-xs tabular-nums shrink-0"
-          style={{ color: "var(--text-faint)" }}
-        >
-          {projects.length} {projects.length === 1 ? "project" : "projects"}
-        </span>
-      </div>
+      {/* Divider */}
+      <div
+        className="section-divider animate-fade-in-up delay-300 mt-12 mb-8"
+        aria-hidden="true"
+      />
 
       {/* Project grid */}
       <div className="grid gap-4 sm:grid-cols-2">

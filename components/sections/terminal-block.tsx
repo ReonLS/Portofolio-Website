@@ -54,19 +54,34 @@ function Cursor() {
 }
 
 export function TerminalBlock() {
-  const [typedLines, setTypedLines] = useState(0);
-  const [typedChars, setTypedChars] = useState(0);
-  const [phase, setPhase] = useState<Phase>("typing");
-  const [reducedMotion, setReducedMotion] = useState(false);
+  // Read reduced-motion preference synchronously so the initial render
+  // is already correct — no cascading setState on mount.
+  const [reducedMotion, setReducedMotion] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
 
-  // Check for reduced motion preference on mount
+  const [typedLines, setTypedLines] = useState(() =>
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? codeLines.length
+      : 0
+  );
+  const [typedChars, setTypedChars] = useState(0);
+  const [phase, setPhase] = useState<Phase>(() =>
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? "paused"
+      : "typing"
+  );
+
+  // Subscribe to future preference changes only (no setState in body)
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (mq.matches) {
-      setReducedMotion(true);
-      setTypedLines(codeLines.length);
-      setPhase("paused");
-    }
+    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
   }, []);
 
   // Main animation loop

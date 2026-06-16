@@ -83,19 +83,21 @@ export function ContactLinkList({ links }: { links: ContactLink[] }) {
                     <CopyButton textToCopy={link.value} />
                   </div>
                 )}
-                <span
-                  className="transition-transform duration-200"
-                  style={{
-                    color: "var(--text-muted)",
-                    transform:
-                      hoveredId === link.id
-                        ? "translate(3px, -3px)"
-                        : "translate(0,0)",
-                  }}
-                  aria-hidden="true"
-                >
-                  <HiArrowTopRightOnSquare size={16} />
-                </span>
+                {!isEmail && (
+                  <span
+                    className="transition-transform duration-200"
+                    style={{
+                      color: "var(--text-muted)",
+                      transform:
+                        hoveredId === link.id
+                          ? "translate(3px, -3px)"
+                          : "translate(0,0)",
+                    }}
+                    aria-hidden="true"
+                  >
+                    <HiArrowTopRightOnSquare size={16} />
+                  </span>
+                )}
               </div>
             </a>
           </li>

@@ -1,55 +1,65 @@
-import { RiGithubLine, RiLinkedinLine } from "react-icons/ri";
-
 import { siteConfig } from "@/lib/site";
+import styles from "./footer.module.css";
 
 export function Footer() {
-  const year = new Date().getFullYear();
-
   return (
-    <footer
-      className="mt-auto"
-      style={{
-        borderTop: "1px solid var(--border-light)",
-        background: "linear-gradient(to bottom, transparent, var(--bg-subtle))"
-      }}
-    >
-      <div className="mx-auto max-w-5xl px-6 py-10">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          {/* Left — Brand */}
-          <div className="flex flex-col gap-1">
-            <span
-              className="text-xs font-semibold tracking-widest uppercase"
-              style={{ color: "var(--text-primary)", letterSpacing: "0.15em" }}
-            >
-              {siteConfig.name}
-            </span>
-            <p className="text-xs" style={{ color: "var(--text-faint)" }}>
-              © {year} {siteConfig.author.name}
-            </p>
-          </div>
+    <footer className="mt-auto">
+      {/* Center-fade gradient top border */}
+      <div
+        aria-hidden="true"
+        style={{
+          height: "1px",
+          background:
+            "linear-gradient(to right, transparent, var(--border-default) 30%, var(--border-default) 70%, transparent)",
+        }}
+      />
 
-          {/* Right — Social Links */}
-          <div className="flex items-center gap-6">
-            <a
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-hover flex items-center gap-1.5 text-xs font-medium tracking-widest uppercase transition-opacity duration-200 hover:opacity-50"
-              style={{ color: "var(--text-muted)", letterSpacing: "0.1em" }}
-            >
-              <RiGithubLine size={14} aria-hidden="true" style={{ color: "var(--text-muted)" }} />
-              GitHub
-            </a>
-            <a
-              href={siteConfig.links.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-hover flex items-center gap-1.5 text-xs font-medium tracking-widest uppercase transition-opacity duration-200 hover:opacity-50"
-              style={{ color: "var(--text-muted)", letterSpacing: "0.1em" }}
-            >
-              <RiLinkedinLine size={14} aria-hidden="true" style={{ color: "var(--text-muted)" }} />
-              LinkedIn
-            </a>
+      <div
+        style={{
+          background: "linear-gradient(to bottom, transparent, var(--bg-subtle))",
+        }}
+      >
+        <div className="mx-auto max-w-5xl px-6 py-8">
+          {/* Centered signature */}
+          <div className="flex items-center justify-center gap-8">
+            {/* Left decorative fade line */}
+            <span
+              aria-hidden="true"
+              style={{
+                display: "block",
+                height: "1px",
+                width: "6rem",
+                background:
+                  "linear-gradient(to left, var(--border-default), transparent)",
+              }}
+            />
+
+            <p className="flex items-baseline gap-3 whitespace-nowrap">
+              <span
+                className="text-sm"
+                style={{ color: "var(--text-faint)" }}
+              >
+                Created by
+              </span>
+              <span
+                className={`text-sm font-semibold tracking-widest uppercase ${styles.authorName}`}
+                style={{ letterSpacing: "0.15em" }}
+              >
+                {siteConfig.author.name}
+              </span>
+            </p>
+
+            {/* Right decorative fade line */}
+            <span
+              aria-hidden="true"
+              style={{
+                display: "block",
+                height: "1px",
+                width: "6rem",
+                background:
+                  "linear-gradient(to right, var(--border-default), transparent)",
+              }}
+            />
           </div>
         </div>
       </div>
