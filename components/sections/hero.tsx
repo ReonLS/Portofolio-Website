@@ -1,21 +1,9 @@
 import Link from "next/link";
 
+import { TerminalBlock } from "@/components/sections/terminal-block";
 import { Tooltip } from "@/components/ui/tooltip";
 
-// Decorative code lines for the terminal block
-const codeLines = [
-  { tokens: [{ text: "package ", color: "var(--text-muted)" }, { text: "main", color: "var(--text-secondary)" }] },
-  { tokens: [] },
-  { tokens: [{ text: "import ", color: "var(--text-muted)" }, { text: "\"github.com/gin-gonic/gin\"", color: "var(--text-secondary)" }] },
-  { tokens: [] },
-  { tokens: [{ text: "func ", color: "var(--text-muted)" }, { text: "main", color: "var(--text-primary)" }, { text: "() {", color: "var(--text-muted)" }] },
-  { tokens: [{ text: "  r := ", color: "var(--text-muted)" }, { text: "gin", color: "var(--text-secondary)" }, { text: ".Default()", color: "var(--text-muted)" }] },
-  { tokens: [{ text: "  r.GET(", color: "var(--text-muted)" }, { text: "\"/api/health\"", color: "var(--text-secondary)" }, { text: ", func(c *", color: "var(--text-muted)" }, { text: "gin", color: "var(--text-secondary)" }, { text: ".Context) {", color: "var(--text-muted)" }] },
-  { tokens: [{ text: "    c.JSON(", color: "var(--text-muted)" }, { text: "200", color: "var(--text-primary)" }, { text: ", ", color: "var(--text-muted)" }, { text: "gin.H", color: "var(--text-secondary)" }, { text: "{\"status\": ", color: "var(--text-muted)" }, { text: "\"ok\"", color: "var(--text-secondary)" }, { text: "})", color: "var(--text-muted)" }] },
-  { tokens: [{ text: "  })", color: "var(--text-muted)" }] },
-  { tokens: [{ text: "  r.Run(", color: "var(--text-muted)" }, { text: "\":8080\"", color: "var(--text-secondary)" }, { text: ")", color: "var(--text-muted)" }] },
-  { tokens: [{ text: "}", color: "var(--text-muted)" }] },
-];
+
 
 const stack = [
   { label: "Go (Golang)", tooltip: "Primary language — REST APIs & CLI tools" },
@@ -129,109 +117,7 @@ export function Hero() {
         className="animate-fade-in-up delay-300 hidden lg:flex flex-col"
         aria-hidden="true"
       >
-        {/* Terminal window */}
-        <div
-          style={{
-            border: "1px solid var(--border-light)",
-            background: "var(--bg-surface)",
-            boxShadow: "var(--shadow-lg), inset 0 1px 0 var(--border-hairline)",
-          }}
-        >
-          {/* Title bar */}
-          <div
-            className="flex items-center gap-2 px-4 py-3"
-            style={{
-              borderBottom: "1px solid var(--border-light)",
-              background: "var(--bg-subtle)",
-            }}
-          >
-            {/* Traffic lights (monochrome) */}
-            {[0, 1, 2].map((i) => (
-              <span
-                key={i}
-                className="inline-block h-2.5 w-2.5 rounded-full"
-                style={{ background: "var(--border-default)" }}
-              />
-            ))}
-            <span
-              className="ml-3 text-xs font-mono"
-              style={{ color: "var(--text-faint)", letterSpacing: "0.05em" }}
-            >
-              main.go
-            </span>
-          </div>
-
-          {/* Code body */}
-          <div className="px-5 py-5 font-mono text-xs leading-6 overflow-x-auto">
-            {/* Line numbers + code */}
-            {codeLines.map((line, idx) => (
-              <div key={idx} className="flex items-baseline gap-5">
-                {/* Line number */}
-                <span
-                  className="select-none shrink-0 w-4 text-right tabular-nums"
-                  style={{ color: "var(--border-default)" }}
-                >
-                  {idx + 1}
-                </span>
-                {/* Tokens */}
-                <span>
-                  {line.tokens.length === 0 ? (
-                    <>&nbsp;</>
-                  ) : (
-                    line.tokens.map((token, ti) => (
-                      <span key={ti} style={{ color: token.color }}>
-                        {token.text}
-                      </span>
-                    ))
-                  )}
-                </span>
-              </div>
-            ))}
-
-            {/* Blinking cursor */}
-            <div className="flex items-baseline gap-5 mt-1">
-              <span
-                className="select-none shrink-0 w-4 text-right tabular-nums"
-                style={{ color: "var(--border-default)" }}
-              >
-                {codeLines.length + 1}
-              </span>
-              <span
-                className="inline-block h-3.5 w-1.5 animate-pulse"
-                style={{ background: "var(--text-muted)" }}
-              />
-            </div>
-          </div>
-
-          {/* Status bar */}
-          <div
-            className="flex items-center justify-between px-4 py-2"
-            style={{
-              borderTop: "1px solid var(--border-light)",
-              background: "var(--bg-subtle)",
-            }}
-          >
-            <div className="flex items-center gap-1.5">
-              <span
-                className="inline-block h-1.5 w-1.5 rounded-full"
-                style={{ background: "var(--text-secondary)" }}
-              />
-              <span
-                className="text-xs font-mono"
-                style={{ color: "var(--text-faint)" }}
-              >
-                server running on :8080
-              </span>
-            </div>
-            <span
-              className="text-xs font-mono"
-              style={{ color: "var(--text-faint)" }}
-            >
-              Go
-            </span>
-          </div>
-        </div>
-
+        <TerminalBlock />
       </div>
     </section>
   );
