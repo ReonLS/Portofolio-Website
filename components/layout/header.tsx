@@ -121,54 +121,74 @@ export function Header() {
             aria-label="Toggle mobile menu"
             style={{ color: "var(--text-primary)" }}
           >
-            {isMobileMenuOpen ? <RiCloseLine size={24} /> : <RiMenuLine size={24} />}
+            <div className="relative w-6 h-6">
+              <RiMenuLine
+                size={24}
+                className="absolute inset-0 transition-all duration-200"
+                style={{
+                  opacity: isMobileMenuOpen ? 0 : 1,
+                  transform: isMobileMenuOpen ? "rotate(90deg)" : "rotate(0deg)",
+                }}
+              />
+              <RiCloseLine
+                size={24}
+                className="absolute inset-0 transition-all duration-200"
+                style={{
+                  opacity: isMobileMenuOpen ? 1 : 0,
+                  transform: isMobileMenuOpen ? "rotate(0deg)" : "rotate(-90deg)",
+                }}
+              />
+            </div>
           </button>
         </div>
       </div>
 
       {/* Mobile Menu Dropdown */}
-      {isMobileMenuOpen && (
-        <div
-          className="absolute top-16 left-0 w-full border-b md:hidden"
-          style={{
-            background: "color-mix(in srgb, var(--bg-surface) 95%, transparent)",
-            WebkitBackdropFilter: "blur(16px)",
-            backdropFilter: "blur(16px)",
-            borderColor: "var(--border-light)",
-            boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.05)",
-          }}
-        >
-          <nav aria-label="Mobile navigation" className="flex flex-col py-6 px-6">
-            <ul className="flex flex-col gap-6">
-              {siteConfig.nav.map((item) => {
-                const isActive =
-                  item.href === "/"
-                    ? pathname === "/"
-                    : pathname.startsWith(item.href);
+      <div
+        className={`absolute top-16 left-0 w-full border-b md:hidden mobile-menu ${
+          isMobileMenuOpen ? "mobile-menu--open" : ""
+        }`}
+        style={{
+          background: "color-mix(in srgb, var(--bg-surface) 95%, transparent)",
+          WebkitBackdropFilter: "blur(16px)",
+          backdropFilter: "blur(16px)",
+          borderColor: "var(--border-light)",
+          boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.05)",
+        }}
+      >
+        <nav aria-label="Mobile navigation" className="flex flex-col py-6 px-6">
+          <ul className="flex flex-col gap-6">
+            {siteConfig.nav.map((item, index) => {
+              const isActive =
+                item.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(item.href);
+              
+              // 100ms, 200ms, 300ms, 400ms delay classes
+              const delayClass = `delay-${(index + 1) * 100}`;
 
-                return (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      className="block text-sm font-medium tracking-widest uppercase transition-opacity duration-200 hover:opacity-60"
-                      style={{
-                        color: isActive
-                          ? "var(--text-primary)"
-                          : "var(--text-muted)",
-                        textDecoration: "none",
-                        letterSpacing: "0.15em",
-                      }}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
-        </div>
-      )}
+              return (
+                <li key={item.href} className={delayClass}>
+                  <Link
+                    href={item.href}
+                    className="block text-sm font-medium tracking-widest uppercase transition-opacity duration-200 hover:opacity-60"
+                    style={{
+                      color: isActive
+                        ? "var(--text-primary)"
+                        : "var(--text-muted)",
+                      textDecoration: "none",
+                      letterSpacing: "0.15em",
+                    }}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </div>
 
       {/* Scroll Progress Indicator Bar */}
       <div
