@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 import { siteConfig } from "@/lib/site";
 import { Reveal } from "@/components/ui/reveal";
@@ -35,25 +36,51 @@ export default function AboutPage() {
         </p>
       </div>
 
-      {/* Heading */}
-      <h1
-        className="animate-fade-in-up delay-100 font-semibold leading-tight tracking-tight mb-8"
-        style={{
-          fontSize: "clamp(2rem, 5vw, 3.5rem)",
-          color: "var(--text-primary)",
-          letterSpacing: "-0.025em",
-          maxWidth: "28rem",
-        }}
-      >
-        The person behind the work.
-      </h1>
+      {/* Heading + Profile Photo */}
+      <div className="animate-fade-in-up delay-100 flex flex-col items-start gap-6 mb-8 md:flex-row md:items-center md:justify-between md:gap-12">
+        {/* Left: heading + divider */}
+        <div className="flex flex-col gap-6 flex-1">
+          <h1
+            className="font-semibold leading-tight tracking-tight"
+            style={{
+              fontSize: "clamp(2rem, 5vw, 3.5rem)",
+              color: "var(--text-primary)",
+              letterSpacing: "-0.025em",
+            }}
+          >
+            The person behind the work.
+          </h1>
 
-      {/* Divider */}
-      <div
-        className="animate-fade-in-up delay-200 section-divider mb-12"
-        style={{ maxWidth: "20rem" }}
-        aria-hidden="true"
-      />
+          {/* Divider */}
+          <div
+            className="section-divider"
+            style={{ maxWidth: "20rem" }}
+            aria-hidden="true"
+          />
+        </div>
+
+        {/* Right: profile photo */}
+        <div
+          className="about-photo-wrapper relative shrink-0 flex items-end justify-center"
+          style={{
+            width: "clamp(180px, 24vw, 280px)",
+            aspectRatio: "1 / 1",
+            borderRadius: "50%",
+            background: "#D4D4D0",
+            overflow: "hidden",
+          }}
+        >
+          <Image
+            src="/images/Cutout.PNG"
+            alt={`${siteConfig.author.name} — profile photo`}
+            width={1024}
+            height={1024}
+            priority
+            className="about-photo w-[75%] h-auto"
+            sizes="(max-width: 768px) 180px, (max-width: 1024px) 24vw, 280px"
+          />
+        </div>
+      </div>
 
       {/* Body content */}
       <Reveal delayClass="delay-300">

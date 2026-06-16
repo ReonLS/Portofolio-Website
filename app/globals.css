@@ -25,13 +25,14 @@
   /* Accent */
   --accent: #171717;
   --accent-hover: #404040;
-  --accent-color: #2563EB; /* Premium vivid blue accent */
+  --accent-color: #2563EB;
+  /* Premium vivid blue accent */
 
   /* Shadows */
-  --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-md: 0 8px 24px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04);
-  --shadow-lg: 0 20px 48px rgba(0,0,0,0.10), 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.10), 0 4px 12px rgba(0, 0, 0, 0.06);
 
   /* Tailwind token mapping */
   --background: var(--bg-base);
@@ -63,13 +64,14 @@
   /* Accent */
   --accent: #F2F2F2;
   --accent-hover: #B0B0B0;
-  --accent-color: #3B82F6; /* Premium bright blue accent */
+  --accent-color: #3B82F6;
+  /* Premium bright blue accent */
 
   /* Shadows for dark mode (subtly stronger to be visible) */
-  --shadow-xs: 0 1px 2px rgba(0,0,0,0.2);
-  --shadow-sm: 0 2px 8px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
-  --shadow-md: 0 8px 24px rgba(0,0,0,0.4), 0 2px 6px rgba(0,0,0,0.2);
-  --shadow-lg: 0 20px 48px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.3);
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.3);
 
   --background: var(--bg-base);
   --foreground: var(--text-primary);
@@ -89,8 +91,10 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;  /* Internet Explorer 10+, Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+, Edge */
 }
 
 html {
@@ -156,7 +160,8 @@ body {
    CUSTOM SCROLLBAR
    ============================================ */
 ::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Edge, Opera */
+  display: none;
+  /* Chrome, Safari, Edge, Opera */
 }
 
 /* ============================================
@@ -210,6 +215,7 @@ body {
   from {
     background-position: -200% center;
   }
+
   to {
     background-position: 200% center;
   }
@@ -254,22 +260,18 @@ body {
    ============================================ */
 .section-divider {
   height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    var(--border-default) 20%,
-    var(--border-default) 80%,
-    transparent
-  );
+  background: linear-gradient(to right,
+      transparent,
+      var(--border-default) 20%,
+      var(--border-default) 80%,
+      transparent);
   transform-origin: left center;
   animation: drawLine 0.6s ease-out both;
 }
 
 .ruled-bg {
-  background-image: linear-gradient(
-    var(--border-hairline) 1px,
-    transparent 1px
-  );
+  background-image: linear-gradient(var(--border-hairline) 1px,
+      transparent 1px);
   background-size: 100% 2.5rem;
 }
 
@@ -305,6 +307,7 @@ body {
     transform: scale(0.85) translateY(-8px);
     transform-origin: top right;
   }
+
   to {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -319,6 +322,7 @@ body {
     transform-origin: top right;
     visibility: visible;
   }
+
   to {
     opacity: 0;
     transform: scale(0.85) translateY(-8px);
@@ -331,7 +335,8 @@ body {
   transform-origin: top right;
   animation: menuCollapse 200ms ease-out forwards;
   pointer-events: none;
-  visibility: hidden; /* Prevent screen readers from accessing closed menu */
+  visibility: hidden;
+  /* Prevent screen readers from accessing closed menu */
 }
 
 .mobile-menu--open {
@@ -341,8 +346,29 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .mobile-menu,
   .mobile-menu--open {
     animation: none;
+  }
+}
+
+/* ============================================
+   ABOUT — Profile photo
+   ============================================ */
+.about-photo {
+  filter: grayscale(100%);
+  transition: filter 500ms ease, transform 500ms ease;
+  transform-origin: center top;
+}
+
+.about-photo-wrapper:hover .about-photo {
+  filter: grayscale(0%);
+  transform: scale(1.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-photo {
+    transition: none;
   }
 }
