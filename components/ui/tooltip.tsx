@@ -5,10 +5,9 @@ import { getTechIcon } from "@/lib/tech-icons";
 
 type TooltipProps = {
   label: string;
-  tooltip: string;
 };
 
-export function Tooltip({ label, tooltip }: TooltipProps) {
+export function Tooltip({ label }: TooltipProps) {
   const [hovered, setHovered] = useState(false);
   const Icon = getTechIcon(label);
 
@@ -26,7 +25,7 @@ export function Tooltip({ label, tooltip }: TooltipProps) {
           background: hovered ? "var(--bg-subtle)" : "var(--bg-surface)",
           transition: "background 200ms ease, color 200ms ease",
           letterSpacing: "0.02em",
-          cursor: "help",
+          cursor: "default",
         }}
       >
         {Icon && createElement(Icon, {
@@ -41,25 +40,6 @@ export function Tooltip({ label, tooltip }: TooltipProps) {
         })}
         <span>{label}</span>
       </div>
-      {hovered && (
-        <div
-          className="animate-fade-in-up absolute bottom-full left-1/2 z-20 mb-2 -translate-x-1/2 whitespace-nowrap px-3 py-1.5 text-xs pointer-events-none"
-          style={{
-            background: "var(--text-primary)",
-            color: "var(--bg-surface)",
-            boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-          }}
-        >
-          {tooltip}
-          {/* Subtle triangle arrow */}
-          <div
-            className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent"
-            style={{
-              borderTopColor: "var(--text-primary)",
-            }}
-          />
-        </div>
-      )}
     </div>
   );
 }

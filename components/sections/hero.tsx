@@ -6,15 +6,15 @@ import { Tooltip } from "@/components/ui/tooltip";
 
 
 const stack = [
-  { label: "Go (Golang)", tooltip: "Primary language — REST APIs & CLI tools" },
-  { label: "REST API", tooltip: "Designing clean, stateless endpoints" },
-  { label: "MySQL", tooltip: "Relational database design & optimization" },
-  { label: "MariaDB", tooltip: "High-performance database clustering" },
-  { label: "Docker", tooltip: "Containerization for production & local dev" },
-  { label: "JWT", tooltip: "Stateless security & token authentication" },
-  { label: "RBAC", tooltip: "Role-Based Access Control authorization" },
-  { label: "Unit Testing", tooltip: "Testing handlers, services, and repositories" },
-  { label: "Swagger", tooltip: "Interactive REST API documentation" },
+  { label: "Go (Golang)" },
+  { label: "REST API" },
+  { label: "MySQL" },
+  { label: "MariaDB" },
+  { label: "Docker" },
+  { label: "JWT" },
+  { label: "RBAC" },
+  { label: "Unit Testing" },
+  { label: "Swagger" },
 ];
 
 export function Hero() {
@@ -78,7 +78,7 @@ export function Hero() {
         <ul className="animate-fade-in-up delay-400 mt-6 flex flex-wrap gap-2">
           {stack.map((tech) => (
             <li key={tech.label}>
-              <Tooltip label={tech.label} tooltip={tech.tooltip} />
+              <Tooltip label={tech.label} />
             </li>
           ))}
         </ul>
