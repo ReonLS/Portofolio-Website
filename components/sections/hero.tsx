@@ -108,8 +108,10 @@ export function Hero() {
           >
             View Projects
           </Link>
-          <Link
-            href="/contact"
+          <a
+            href="/files/CV_Rexi-Leon-Saputra.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex w-full sm:w-auto h-11 items-center justify-center px-7 text-xs font-medium tracking-widest uppercase transition-opacity duration-200 hover:opacity-60"
             style={{
               border: "1px solid var(--border-default)",
@@ -117,8 +119,8 @@ export function Hero() {
               letterSpacing: "0.12em",
             }}
           >
-            Get in Touch
-          </Link>
+            Download CV
+          </a>
         </div>
       </div>
 
